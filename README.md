@@ -1,6 +1,6 @@
 # Nazart Collections
 
-Repository for specialized C# Data Structures. 
+Repository for specialized C# Data Structures.
 
 ## List of Data Structures
 
@@ -26,7 +26,7 @@ A cycle detection algorithm can be developed by using the `FastDisjointSet` like
 ``` cs
 bool HasCycle(IEnumerable<(int,int)> edges, int nodeCount) {
     var disjointSet = new FastDisjointSet(nodeCount);
-    
+
     foreach(var (a,b) in edges) {
         if (!disjointSet.Union(a, b)) {
             return true;
@@ -35,4 +35,14 @@ bool HasCycle(IEnumerable<(int,int)> edges, int nodeCount) {
 
     return false;
 }
+```
+
+## Building and Testing
+
+To build and test, clone repository to directory and execute the following commands:
+
+``` bash
+\> dotnet build
+\> cd Nazart.Collections.Test
+\> dotnet test
 ```
