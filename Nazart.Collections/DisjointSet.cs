@@ -24,15 +24,12 @@ namespace Nazart.Collections {
             if (data == null) throw new ArgumentNullException(nameof(data));
 
             _items = data.ToArray();
-            // TODO: Use explicit tuple names after 7.1
-            // TODO: Consider catching Argument exception and rethrowing with unique element message
-            _lookup = _items.Select((e, i) => (e, i)).ToImmutableDictionary(k => k.Item1, v => v.Item2);
+            _lookup = _items.Select((e, i) => (e, i)).ToImmutableDictionary(k => k.e, v => v.i);
             _fastDisjointSet = new FastDisjointSet(_items.Length);
         }
 
         /// <inheritdoc />
-        public T Find(T item)
-        {
+        public T Find(T item) {
             if (!_lookup.TryGetValue(item, out var index))
                 throw new ArgumentException("Item is not in the set.", nameof(item));
 
